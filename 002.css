@@ -1,0 +1,113 @@
+/* 이건 내 방법인데 별로인듯 */
+body {
+    background: rosybrown;
+}
+
+h2,
+p {
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "a b c d"
+        "e f g";
+    gap: 10px;
+    width: 500px;
+    height: 500px;
+}
+
+.card-item .a {
+    grid-area: a;
+}
+
+.card-item .b {
+    grid-area: b;
+}
+
+.card-item .c {
+    grid-area: c;
+}
+
+.card-item .d {
+    grid-area: d;
+}
+
+.card-item .e {
+    grid-area: e;
+}
+
+.card-item .f {
+    grid-area: f;
+}
+
+.card-item .g {
+    grid-area: g;
+}
+
+.card-item a {
+    /* Read말고 나머지는 a태그 적용시키지 않기 위해 */
+    text-decoration: none;
+    color: #29363d;
+    display: block;
+    width: 288px;
+    background: #fff;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* grid는 이렇게 하는게 더 효율적이다. 내가 한 방법으로는 반응형 만들기에 실패했다. 
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+    gap: 10px;
+    width: min(1224px, calc(100%-60px));
+    margin: auto;
+}
+*/
+
+.card-item img {
+    width: 100%;
+    /* 비율 맞추기 */
+    aspect-ratio: 288/196;
+    /* 이미지가 찌그러지니까 이걸 해줘야함 */
+    object-fit: cover;
+    /* 여백이 사라지게 */
+    vertical-align: top;
+}
+
+.card-text {
+    background: gold;
+    padding: 24px 16px 16px;
+}
+
+.card-text .title {
+    font-size: 16px;
+    /* 텍스트 길이가 넘어갔을때 말줄임표시를 하겠다 */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* .title + p 해도 됨, 하지만 이게 더 명확하고 가독성 좋음 */
+.card-text .title+p {
+    font-size: 12px;
+    color: #5a6a72;
+    overflow: hidden;
+    /* 아직 이걸 잘 모르겠음. 복습 */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    margin: 12px 0 16px;
+}
+
+.underline {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 6px;
+}
